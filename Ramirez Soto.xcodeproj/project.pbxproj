@@ -15,6 +15,7 @@
 		1D44152E2548B10100003E9B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D44152C2548B10100003E9B /* LaunchScreen.storyboard */; };
 		1D4415392548B10200003E9B /* Ramirez_SotoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4415382548B10200003E9B /* Ramirez_SotoTests.swift */; };
 		1D4415442548B10200003E9B /* Ramirez_SotoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4415432548B10200003E9B /* Ramirez_SotoUITests.swift */; };
+		1D4415622548B1E600003E9B /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4415612548B1E600003E9B /* Login.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		1D44153F2548B10200003E9B /* Ramirez SotoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Ramirez SotoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D4415432548B10200003E9B /* Ramirez_SotoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ramirez_SotoUITests.swift; sourceTree = "<group>"; };
 		1D4415452548B10200003E9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1D4415612548B1E600003E9B /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,8 @@
 		1D4415152548B0FE00003E9B = {
 			isa = PBXGroup;
 			children = (
+				1D4415542548B10900003E9B /* Controladores_Pantallas */,
+				1D4415582548B11600003E9B /* Recursos_Graficos */,
 				1D4415202548B0FE00003E9B /* Ramirez Soto */,
 				1D4415372548B10200003E9B /* Ramirez SotoTests */,
 				1D4415422548B10200003E9B /* Ramirez SotoUITests */,
@@ -126,6 +130,21 @@
 				1D4415452548B10200003E9B /* Info.plist */,
 			);
 			path = "Ramirez SotoUITests";
+			sourceTree = "<group>";
+		};
+		1D4415542548B10900003E9B /* Controladores_Pantallas */ = {
+			isa = PBXGroup;
+			children = (
+				1D4415612548B1E600003E9B /* Login.swift */,
+			);
+			path = Controladores_Pantallas;
+			sourceTree = "<group>";
+		};
+		1D4415582548B11600003E9B /* Recursos_Graficos */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Recursos_Graficos;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +280,7 @@
 				1D4415262548B0FE00003E9B /* ViewController.swift in Sources */,
 				1D4415222548B0FE00003E9B /* AppDelegate.swift in Sources */,
 				1D4415242548B0FE00003E9B /* SceneDelegate.swift in Sources */,
+				1D4415622548B1E600003E9B /* Login.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
