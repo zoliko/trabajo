@@ -7,7 +7,8 @@
 
 import UIKit
 
-class Login: UIViewController {
+class Login: UIViewController
+{
     
     //****************************       variables interfaz      ********************************
     
@@ -15,73 +16,66 @@ class Login: UIViewController {
         
         @IBOutlet weak var Campo_pass: UITextField!
     
-    //****************************     variables funcionamiento  ********************************
+    //****************************     variables funcionamiento  ***************************************
     
     
-    //*******************************************************************************************
+    //**************************************************************************************************
     override func viewDidLoad()
         {
             super.viewDidLoad()
         
-            //****************************       para la vista      ********************************
+            //****************************       para la vista      ************************************
+                Cambiar_fondo()
                 
                 Agrega_boton_barra_navegacion()
                 Campo_Correo.background = UIImage(named: "caja_texto_usr")!
                 Campo_pass.background = UIImage(named: "caja_texto_pass")!
+        
 
-            //********************************************
+            //*****************************************************************************************
 
             
            
         }
     
-    //funciones ****************************************************
-    @objc func Funcion_Regresa(sender: UIBarButtonItem)
+    //*************************       funciones de funcionamiento      *********************************
+    @IBAction func Boton_Precionado_Login(_ sender: UIButton)
         {
-           exit(0)
-            //_ = navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true)
+        self.performSegue(withIdentifier: "transicion_Login_Menu", sender: self)
+            //sender.setImage( UIImage(named: "boton_entrar_pres")!,for: UIControl.State.highlighted);
         }
+    
+    
+    
+    //*************************       funciones de vista e interfaz      *******************************
+
     
     func Alerta_Mensajes(title: String,Mensaje:String)
         {
-            let AlertaPerso = UIAlertController(title: title, message: Mensaje, preferredStyle: UIAlertController.Style.alert)
+            let Mensaje_alerta = UIAlertController(title: title, message: Mensaje, preferredStyle: UIAlertController.Style.alert)
             let BotonAlertaOK = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-            
-            AlertaPerso.addAction(BotonAlertaOK)
-            self.present(AlertaPerso,animated:true,completion:nil)
+            Mensaje_alerta.addAction(BotonAlertaOK)
+            self.present(Mensaje_alerta,animated:true,completion:nil)
             
         }
-    
-    //funciones ************************************************************************************
     func Agrega_boton_barra_navegacion()
         {
             self.navigationItem.hidesBackButton = true
             let newBackButton = UIBarButtonItem(title: "Atras", style: UIBarButtonItem.Style.plain, target: self, action: #selector(Login.Funcion_Regresa(sender:)))
             self.navigationItem.leftBarButtonItem = newBackButton
         }
-    /*func addLeftImageTo(txtField: UITextField, andImage img: UIImage)
+    @objc func Funcion_Regresa(sender: UIBarButtonItem)
         {
-            let leftImageView = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: img.size.width, height: img.size.height))
-            leftImageView.image = img
-            txtField.leftView = leftImageView
-            txtField.leftViewMode = .always
-        
-          
-        
-            txtField.background = UIImage(named: "caja_texto_usr")!
-            
-
-        
-        }*/
-    /*func cambia_fondo_contenedor_login()
+           exit(0)
+        }
+    func Cambiar_fondo()
         {
             UIGraphicsBeginImageContext(self.view.frame.size)
-            UIImage(named: "cuadro_dialogo_inicio.png")?.draw(in: self.view.bounds)
+            UIImage(named: "fondo_pantalla")?.draw(in: self.view.bounds)
             let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
             UIGraphicsEndImageContext()
-            fondo_login.backgroundColor = UIColor(patternImage: image)
-        }*/
-    
+            self.view.backgroundColor = UIColor(patternImage: image)
 
-    
+        }
 }

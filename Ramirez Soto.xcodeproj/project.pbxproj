@@ -16,6 +16,8 @@
 		1D4415392548B10200003E9B /* Ramirez_SotoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4415382548B10200003E9B /* Ramirez_SotoTests.swift */; };
 		1D4415442548B10200003E9B /* Ramirez_SotoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4415432548B10200003E9B /* Ramirez_SotoUITests.swift */; };
 		1D4415622548B1E600003E9B /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4415612548B1E600003E9B /* Login.swift */; };
+		1D4415842548EEF300003E9B /* Menu_Principal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4415832548EEF300003E9B /* Menu_Principal.swift */; };
+		1D44158A2549D4E600003E9B /* notoserif_regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1D4415892549D4E600003E9B /* notoserif_regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		1D4415432548B10200003E9B /* Ramirez_SotoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ramirez_SotoUITests.swift; sourceTree = "<group>"; };
 		1D4415452548B10200003E9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D4415612548B1E600003E9B /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		1D4415832548EEF300003E9B /* Menu_Principal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu_Principal.swift; sourceTree = "<group>"; };
+		1D4415892549D4E600003E9B /* notoserif_regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = notoserif_regular.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +85,7 @@
 		1D4415152548B0FE00003E9B = {
 			isa = PBXGroup;
 			children = (
+				1D4415882549D4D000003E9B /* fuentes */,
 				1D4415542548B10900003E9B /* Controladores_Pantallas */,
 				1D4415582548B11600003E9B /* Recursos_Graficos */,
 				1D4415202548B0FE00003E9B /* Ramirez Soto */,
@@ -136,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				1D4415612548B1E600003E9B /* Login.swift */,
+				1D4415832548EEF300003E9B /* Menu_Principal.swift */,
 			);
 			path = Controladores_Pantallas;
 			sourceTree = "<group>";
@@ -145,6 +151,14 @@
 			children = (
 			);
 			path = Recursos_Graficos;
+			sourceTree = "<group>";
+		};
+		1D4415882549D4D000003E9B /* fuentes */ = {
+			isa = PBXGroup;
+			children = (
+				1D4415892549D4E600003E9B /* notoserif_regular.ttf */,
+			);
+			path = fuentes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,6 +267,7 @@
 				1D44152E2548B10100003E9B /* LaunchScreen.storyboard in Resources */,
 				1D44152B2548B10100003E9B /* Assets.xcassets in Resources */,
 				1D4415292548B0FE00003E9B /* Main.storyboard in Resources */,
+				1D44158A2549D4E600003E9B /* notoserif_regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +296,7 @@
 				1D4415222548B0FE00003E9B /* AppDelegate.swift in Sources */,
 				1D4415242548B0FE00003E9B /* SceneDelegate.swift in Sources */,
 				1D4415622548B1E600003E9B /* Login.swift in Sources */,
+				1D4415842548EEF300003E9B /* Menu_Principal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
