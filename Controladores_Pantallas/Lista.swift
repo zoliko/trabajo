@@ -29,16 +29,16 @@ class Lista: UIViewController, UITableViewDelegate, UITableViewDataSource
         override func viewDidLoad()
             {
                 super.viewDidLoad()
-                //Alerta_Mensajes(title: "Menu",Mensaje: Selecction!)
-                
-                print(Selecction!)
             
-                Cambiar_fondo()
-                Cambiar_fondo_lista()
+                // codigo para la vista de la pantlla ***********************************
+                    Cambiar_fondo()
+                    Cambiar_fondo_lista()
             
-                self.tabla_lista.register(celda_lista_documentos.nib(), forCellReuseIdentifier: celda_lista_documentos.identificador)
-                self.tabla_lista.dataSource = self
-                self.tabla_lista.delegate = self
+            
+                // codigo vista tabla ***********************************
+                    self.tabla_lista.register(celda_lista_documentos.nib(), forCellReuseIdentifier: celda_lista_documentos.identificador)
+                    self.tabla_lista.dataSource = self
+                    self.tabla_lista.delegate = self
 
                 
             }
@@ -62,39 +62,30 @@ class Lista: UIViewController, UITableViewDelegate, UITableViewDataSource
                 let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
                 UIGraphicsEndImageContext()
                 self.view.backgroundColor = UIColor(patternImage: image)
-            
-            
-
             }
-    func Cambiar_fondo_lista()
-        {
-            //tabla_lista.backgroundView = UIImageView(image: UIImage(named: "area_lista")!)
+        func Cambiar_fondo_lista()
+            {
+                UIGraphicsBeginImageContext(self.tabla_lista .frame.size)
+                UIImage(named: "area_lista")?.draw(in: self.tabla_lista.bounds)
+                let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+                UIGraphicsEndImageContext()
+                tabla_lista.backgroundColor = UIColor(patternImage: image)
+            }
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+            {
+                return datos_Tabla.count
+            }
         
-          
-            UIGraphicsBeginImageContext(self.tabla_lista .frame.size)
-            UIImage(named: "area_lista")?.draw(in: self.tabla_lista.bounds)
-            let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-            UIGraphicsEndImageContext()
-            tabla_lista.backgroundColor = UIColor(patternImage: image)
-        
-        //tabla_lista.backgroundView = UIImageView(image: UIImage(named: "area_lista")!)
-        
-        
-
-        }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-        {
-            return datos_Tabla.count
-        }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-        {
-            let celda = tableView.dequeueReusableCell(withIdentifier: celda_lista_documentos.identificador, for: indexPath) as! celda_lista_documentos
-        celda.configurar_celda(texto: datos_Tabla[indexPath.row], Seleccion: Selecction!)
-            return celda
-        }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-        {
-            print(indexPath.row)
-        }
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+            {
+                let celda = tableView.dequeueReusableCell(withIdentifier: celda_lista_documentos.identificador, for: indexPath) as! celda_lista_documentos
+                celda.configurar_celda(texto: datos_Tabla[indexPath.row], Seleccion: Selecction!)
+                return celda
+            }
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+            {
+                //print(indexPath.row)
+                self.dismiss(animated: true)
+                self.performSegue(withIdentifier: "transicion_Lista_visor", sender: self)
+            }
 }

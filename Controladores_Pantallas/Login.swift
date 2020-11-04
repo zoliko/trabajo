@@ -41,8 +41,8 @@ class Login: UIViewController
     //*************************       funciones de funcionamiento      *********************************
     @IBAction func Boton_Precionado_Login(_ sender: UIButton)
         {
-        self.dismiss(animated: true)
-        self.performSegue(withIdentifier: "transicion_Login_Menu", sender: self)
+            self.dismiss(animated: true)
+            self.performSegue(withIdentifier: "transicion_Login_Menu", sender: self)
             //sender.setImage( UIImage(named: "boton_entrar_pres")!,for: UIControl.State.highlighted);
         }
     

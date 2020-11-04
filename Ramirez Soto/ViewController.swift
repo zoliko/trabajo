@@ -41,6 +41,7 @@ class ViewController: UIViewController {
             self.view.backgroundColor = UIColor(patternImage: image)
 
         }
+    
 
 
 }

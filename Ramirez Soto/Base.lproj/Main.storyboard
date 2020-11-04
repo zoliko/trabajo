@@ -217,11 +217,28 @@
                     <navigationItem key="navigationItem" id="X4z-4M-OhH"/>
                     <connections>
                         <outlet property="tabla_lista" destination="ht4-tw-rfN" id="ZQP-qM-Azi"/>
+                        <segue destination="MfE-OD-Q08" kind="show" identifier="transicion_Lista_visor" id="kQD-ML-PcA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tGu-eE-XWJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3182.608695652174" y="93.750000000000014"/>
+        </scene>
+        <!--Visor-->
+        <scene sceneID="kZf-Ox-7Es">
+            <objects>
+                <viewController id="MfE-OD-Q08" customClass="Visor" customModule="Ramirez_Soto" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LmU-f4-npE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Oh4-sp-krG"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="TBM-Bl-Xsl"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wwp-nz-8Q9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3997" y="94"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
