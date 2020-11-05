@@ -7,7 +7,7 @@
 
 import UIKit
 import Alamofire
-class Login: UIViewController
+class Login: UIViewController, UITextFieldDelegate
 {
     
     //****************************       variables interfaz      ********************************
@@ -37,17 +37,55 @@ class Login: UIViewController
                 Campo_Correo.background = UIImage(named: "caja_texto_usr")!
                 Campo_pass.background = UIImage(named: "caja_texto_pass")!
             //*****************************************************************************************
+        
+            Campo_Correo.delegate = self
+            Campo_pass.delegate = self
             
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
             
-
-            
-           
         }
-
     
+    //*************************       ocultar teclado     *********************************************
+        deinit
+            {
+                
+                NotificationCenter.default.removeObserver(self,name: UIResponder.keyboardWillShowNotification, object: nil)
+                NotificationCenter.default.removeObserver(self,name: UIResponder.keyboardWillHideNotification, object: nil)
+            NotificationCenter.default.removeObserver(self,name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+            }
+    
+        func Ocultar_teclado()
+            {
+                if Campo_Correo.isFirstResponder { Campo_Correo.resignFirstResponder()}
+                if Campo_pass.isFirstResponder { Campo_pass.resignFirstResponder()}
+            }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+        {
+            Ocultar_teclado()
+            return true
+        }
+    @objc func keyboardWillChange(notification: Notification)
+        {
+            var temp  = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
+            var keyboardSize = (temp?.height)!
+            switch notification.name.rawValue
+                {
+            case "UIKeyboardWillShowNotification":view.frame.origin.y = (-1.0 * keyboardSize)
+                    case "UIKeyboardWillHideNotification":view.frame.origin.y = 0
+                    default:view.frame.origin.y = 0
+                
+                }
+            
+            
+        }
     //*************************       funciones de funcionamiento      *********************************
     @IBAction func Boton_Precionado_Login(_ sender: UIButton)
         {
+            Ocultar_teclado()
+        
             correo_usr = Campo_Correo.text!
             pass_usr = Campo_pass.text!
         
