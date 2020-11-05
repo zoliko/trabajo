@@ -6,17 +6,23 @@
 //
 
 import UIKit
-
+import Alamofire
 class Login: UIViewController
 {
     
     //****************************       variables interfaz      ********************************
     
         @IBOutlet weak var Campo_Correo: UITextField!
-        
         @IBOutlet weak var Campo_pass: UITextField!
     
+    
+    
     //****************************     variables funcionamiento  ***************************************
+    
+        var correo_usr:String = ""
+        var pass_usr:String = ""
+        var id_Empresa = String()
+        var Nombre_Empresa = String()
     
     
     //**************************************************************************************************
@@ -30,20 +36,30 @@ class Login: UIViewController
                 Agrega_boton_barra_navegacion()
                 Campo_Correo.background = UIImage(named: "caja_texto_usr")!
                 Campo_pass.background = UIImage(named: "caja_texto_pass")!
-        
-
             //*****************************************************************************************
+            
+            
 
             
            
         }
+
     
     //*************************       funciones de funcionamiento      *********************************
     @IBAction func Boton_Precionado_Login(_ sender: UIButton)
         {
-            self.dismiss(animated: true)
-            self.performSegue(withIdentifier: "transicion_Login_Menu", sender: self)
-            //sender.setImage( UIImage(named: "boton_entrar_pres")!,for: UIControl.State.highlighted);
+            correo_usr = Campo_Correo.text!
+            pass_usr = Campo_pass.text!
+        
+            if correo_usr.isEmpty || pass_usr.isEmpty
+                {
+                    Alerta_Mensajes(title:"Upps...",Mensaje:"VERIFICA QUE TODOS LOS CAMPOS ESTEN LLENOS")
+                    return
+                }
+        
+            Servicio_web_Login(Usr: correo_usr, Pass: pass_usr)
+        
+            
         }
     
     
@@ -59,16 +75,7 @@ class Login: UIViewController
             self.present(Mensaje_alerta,animated:true,completion:nil)
             
         }
-    func Agrega_boton_barra_navegacion()
-        {
-            self.navigationItem.hidesBackButton = true
-            let newBackButton = UIBarButtonItem(title: "Atras", style: UIBarButtonItem.Style.plain, target: self, action: #selector(Login.Funcion_Regresa(sender:)))
-            self.navigationItem.leftBarButtonItem = newBackButton
-        }
-    @objc func Funcion_Regresa(sender: UIBarButtonItem)
-        {
-           exit(0)
-        }
+
     func Cambiar_fondo()
         {
             UIGraphicsBeginImageContext(self.view.frame.size)
@@ -77,5 +84,68 @@ class Login: UIViewController
             UIGraphicsEndImageContext()
             self.view.backgroundColor = UIColor(patternImage: image)
 
+        }
+    func Agrega_boton_barra_navegacion()
+        {
+            self.navigationItem.hidesBackButton = true
+            let newBackButton = UIBarButtonItem(title: "Salir", style: UIBarButtonItem.Style.plain, target: self, action: #selector(Login.Funcion_Regresa(sender:)))
+            self.navigationItem.leftBarButtonItem = newBackButton
+        }
+    @objc func Funcion_Regresa(sender: UIBarButtonItem)
+        {
+           exit(0)
+        }
+    
+    //*************************       funciones      *******************************
+    
+    func Servicio_web_Login( Usr:String , Pass: String)
+        {
+            let Servicio_web_url = "https:www.dev-mushu.xyz/Files_Gestor_Soto/Drivers/Inicio_Sesion.php"
+            let parametros : Parameters =
+                                            [
+                                                "Correo": Usr,
+                                                "Password": Pass
+                                            ]
+        
+            AF.request(Servicio_web_url, method: .post, parameters: parametros).responseJSON
+                {
+                    (response) in
+                    switch response.result
+                        {
+                            case .success(let data):
+                                let jsonData = data as! NSDictionary
+                                let Variable_Control_json = (jsonData.value(forKey:"exito") as! String?)!
+                                if Variable_Control_json == "Verdadero"
+                                    {
+                                        let Datos_json = (jsonData.value(forKey:"datos") as? [[String:Any]])!
+                                        let elementos =  Datos_json.count
+                                            
+                                        if elementos != 1
+                                            {
+                                                self.Alerta_Mensajes(title:"Upps...",Mensaje:"verifica tus datos")
+                                                return
+                                            }
+                                        else
+                                            {
+                                                self.id_Empresa = (Datos_json[0]["ID_Empresa"] as! String?)!
+                                                self.Nombre_Empresa = (Datos_json[0]["Empresa_Nombre"] as! String?)!
+                                                        
+                                                UserDefaults.standard.set(true, forKey: "estado_login")
+                                                UserDefaults.standard.set(self.Nombre_Empresa, forKey: "Nombre_Empresa")
+                                                UserDefaults.standard.set(self.id_Empresa, forKey: "id_Empresa")
+                                                        
+                                                self.dismiss(animated: true)
+                                                self.performSegue(withIdentifier: "transicion_Login_Menu", sender: self)
+                                            }
+                                    }
+                                else
+                                    {
+                                        self.Alerta_Mensajes(title:"Upps...",Mensaje:"Se encontro un error en el servidor, lamentamos la molestia")
+                                        return
+                                    }
+                            case .failure(let error):
+                                print("Request failed with error: \(error)")
+                        }
+                }
         }
 }
