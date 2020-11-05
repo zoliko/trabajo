@@ -52,6 +52,11 @@
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Correo" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" background="caja_texto_usr" disabledBackground="caja_texto_usr" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4NV-0c-u6w">
                                 <rect key="frame" x="49" y="246" width="317" height="50"/>
@@ -59,6 +64,11 @@
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JMQ-0D-m9P">
                                 <rect key="frame" x="124" y="485" width="167" height="43"/>
@@ -243,7 +253,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="koZ-ok-Wbh"/>
+        <segue reference="4tu-x5-Clw"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="area_nombre_empresa" width="717" height="191"/>

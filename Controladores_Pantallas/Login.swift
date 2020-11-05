@@ -36,6 +36,8 @@ class Login: UIViewController, UITextFieldDelegate
                 Agrega_boton_barra_navegacion()
                 Campo_Correo.background = UIImage(named: "caja_texto_usr")!
                 Campo_pass.background = UIImage(named: "caja_texto_pass")!
+        
+        
             //*****************************************************************************************
         
             Campo_Correo.delegate = self
@@ -69,8 +71,8 @@ class Login: UIViewController, UITextFieldDelegate
         }
     @objc func keyboardWillChange(notification: Notification)
         {
-            var temp  = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
-            var keyboardSize = (temp?.height)!
+        let temp  = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
+        let keyboardSize = (temp?.height)!
             switch notification.name.rawValue
                 {
             case "UIKeyboardWillShowNotification":view.frame.origin.y = (-1.0 * keyboardSize)
