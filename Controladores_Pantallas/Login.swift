@@ -46,11 +46,20 @@ class Login: UIViewController, UITextFieldDelegate
             NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
             NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
             NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        
+            let tap = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard(_:)))
+            self.view.addGestureRecognizer(tap)
             
         }
     
     //*************************       ocultar teclado     *********************************************
-        deinit
+    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer)
+        {
+            Campo_Correo.resignFirstResponder()
+            Campo_pass.resignFirstResponder()
+        
+        }
+    deinit
             {
                 
                 NotificationCenter.default.removeObserver(self,name: UIResponder.keyboardWillShowNotification, object: nil)
