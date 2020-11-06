@@ -40,7 +40,7 @@ class Lista: UIViewController, UITableViewDelegate, UITableViewDataSource
             
                     area_nombre_empresa.background = UIImage(named: "area_nombre_empresa")!
                     area_nombre_empresa.isUserInteractionEnabled = false;
-                    var temp = Selecction?.replacingOccurrences(of: "_", with: " ")
+            let temp = Selecction?.replacingOccurrences(of: "_", with: " ")
                     area_nombre_empresa.text = temp
             
             
