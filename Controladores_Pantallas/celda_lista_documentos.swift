@@ -20,15 +20,33 @@ class celda_lista_documentos: UITableViewCell
     
     func configurar_celda(texto: String, Seleccion: String)
         {
+        
+            UIGraphicsBeginImageContext(self.Area_Texto.frame.size)
+            UIImage(named: "area_lista")?.draw(in: self.bounds)
+            let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+            UIGraphicsEndImageContext()
+            
+        
+            let bgColorView = UIView()
+            bgColorView.backgroundColor = UIColor(patternImage: image)
+            self.selectedBackgroundView = bgColorView
+        
             switch Seleccion
                 {
-                    case "Actas_Constitutivas": Area_Texto.background = UIImage(named: "lista_item_acta_constitutiva")!
-                    case "Actas_Extraordinarias": Area_Texto.background = UIImage(named: "lista_item_acta_extraordinaria")!
-                    case "Identificaciones_Oficiales": Area_Texto.background = UIImage(named: "item_ife")!
-                    case "Comprobantes_Domiciliarios": Area_Texto.background = UIImage(named: "lista_item_comprobante_domiciliario")!
-                    case "Constancias_Situacion_Fiscal": Area_Texto.background = UIImage(named: "lista_item_constancia_fiscal")!
-                    case "Declaraciones_Anuales": Area_Texto.background = UIImage(named: "lista_item_declaracion_anual")!
-                    default: Area_Texto.background = UIImage(named: "lista_item_acta_constitutiva")!
+                    case "Actas_Constitutivas":
+                        Area_Texto.background = UIImage(named: "lista_item_acta_constitutiva")!
+                    case "Actas_Extraordinarias":
+                        Area_Texto.background = UIImage(named: "lista_item_acta_extraordinaria")!
+                    case "Identificaciones_Oficiales":
+                        Area_Texto.background = UIImage(named: "item_ife")!
+                    case "Comprobantes_Domiciliarios":
+                        Area_Texto.background = UIImage(named: "lista_item_comprobante_domiciliario")!
+                    case "Constancias_Situacion_Fiscal":
+                        Area_Texto.background = UIImage(named: "lista_item_constancia_fiscal")!
+                    case "Declaraciones_Anuales":
+                        Area_Texto.background = UIImage(named: "lista_item_declaracion_anual")!
+                    default:
+                        Area_Texto.background = UIImage(named: "lista_item_acta_constitutiva")!
                 }
             
             Area_Texto.isUserInteractionEnabled = false;

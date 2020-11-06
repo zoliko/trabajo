@@ -11,14 +11,19 @@ import PDFKit
 class Visor: UIViewController,URLSessionDownloadDelegate
 {
     
-        var url = "https://www.dev-mushu.xyz/App_Files/Recursos/RS_0000000001/Comprobantes_Domiciliarios/0000000001.pdf";
+    
+        var url = String()
         var pdf_URL: URL!
 
         override func viewDidLoad()
             {
                 super.viewDidLoad()
             
+                //self.Alerta_Mensajes(title:"debug",Mensaje:"esto me enviaste: \(url)")
+                print(url)
+            
                 Agrega_boton_barra_navegacion()
+            
             
             // Add PDFView to view controller.
                let pdfView = PDFView(frame: self.view.bounds)
@@ -39,6 +44,15 @@ class Visor: UIViewController,URLSessionDownloadDelegate
                 pdfView.maxScaleFactor = 4.0
                 pdfView.minScaleFactor = pdfView.scaleFactorForSizeToFit
 
+                
+            }
+    //**************************************************************
+        func Alerta_Mensajes(title: String,Mensaje:String)
+            {
+                let Mensaje_alerta = UIAlertController(title: title, message: Mensaje, preferredStyle: UIAlertController.Style.alert)
+                let BotonAlertaOK = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+                Mensaje_alerta.addAction(BotonAlertaOK)
+                self.present(Mensaje_alerta,animated:true,completion:nil)
                 
             }
         //**************************************************************
