@@ -84,6 +84,7 @@ class Menu_Principal: UIViewController {
                         let Selecction = sender as! String
                         let Nueva_Pantalla_Lista: Lista = segue.destination as! Lista
                         Nueva_Pantalla_Lista.Selecction = Selecction
+                        Nueva_Pantalla_Lista.Id_Empresa = id_Empresa
                     }
             }
     

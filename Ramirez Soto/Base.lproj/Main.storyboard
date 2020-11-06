@@ -217,8 +217,9 @@
                                 </prototypes>
                             </tableView>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Nombre Empresa" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" background="area_nombre_empresa" disabledBackground="area_nombre_empresa" translatesAutoresizingMaskIntoConstraints="NO" id="F76-uR-s2i">
-                                <rect key="frame" x="61" y="102" width="292" height="71"/>
+                                <rect key="frame" x="0.0" y="71" width="414" height="103"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="NotoSerif-Regular" family="Noto Serif" pointSize="21"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -228,6 +229,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="X4z-4M-OhH"/>
                     <connections>
+                        <outlet property="area_nombre_empresa" destination="F76-uR-s2i" id="l4C-pm-ZbS"/>
                         <outlet property="tabla_lista" destination="ht4-tw-rfN" id="ZQP-qM-Azi"/>
                         <segue destination="MfE-OD-Q08" kind="show" identifier="transicion_Lista_visor" id="kQD-ML-PcA"/>
                     </connections>
@@ -254,7 +256,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="koZ-ok-Wbh"/>
+        <segue reference="4tu-x5-Clw"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="area_nombre_empresa" width="717" height="191"/>
