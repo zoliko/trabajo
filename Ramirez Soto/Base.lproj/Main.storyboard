@@ -201,7 +201,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="75" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ht4-tw-rfN">
-                                <rect key="frame" x="20" y="248" width="374" height="413"/>
+                                <rect key="frame" x="20" y="248" width="374" height="455"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" systemColor="opaqueSeparatorColor"/>
@@ -217,7 +217,7 @@
                                 </prototypes>
                             </tableView>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Nombre Empresa" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" background="area_nombre_empresa" disabledBackground="area_nombre_empresa" translatesAutoresizingMaskIntoConstraints="NO" id="F76-uR-s2i">
-                                <rect key="frame" x="0.0" y="71" width="414" height="103"/>
+                                <rect key="frame" x="0.0" y="85" width="414" height="103"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="NotoSerif-Regular" family="Noto Serif" pointSize="21"/>
