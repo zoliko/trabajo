@@ -8,44 +8,75 @@
 import UIKit
 import PDFKit
 
-class Visor: UIViewController,URLSessionDownloadDelegate
+class Visor: UIViewController,URLSessionDownloadDelegate,CAAnimationDelegate
 {
-    
+    let shapeLayer = CAShapeLayer()
+    var pdfView = PDFView()
     
         var url = String()
         var pdf_URL: URL!
+        var  pdfurl: URL!
 
         override func viewDidLoad()
             {
                 super.viewDidLoad()
-            
-                //self.Alerta_Mensajes(title:"debug",Mensaje:"esto me enviaste: \(url)")
-                print(url)
-            
                 Agrega_boton_barra_navegacion()
             
+                // creo visor pdf
             
-            // Add PDFView to view controller.
-               let pdfView = PDFView(frame: self.view.bounds)
-               pdfView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-               self.view.addSubview(pdfView)
-               
-               // Fit content in PDFView.
-               pdfView.autoScales = true
-               
-               // Load Sample.pdf file from app bundle.
-            
-               let  pdfurl = URL(string: url)!
+                    pdfView = PDFView(frame: self.view.bounds)
+                    pdfView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                    self.view.addSubview(pdfView)
+                    pdfView.autoScales = true
+                    pdfurl = URL(string: url)!
+                    pdf_URL = pdfurl;
                 
-                pdf_URL = pdfurl;
+                // creo una animacion de espera
             
-                pdfView.document = PDFDocument(url: pdfurl)
-                pdfView.autoScales = true
-                pdfView.maxScaleFactor = 4.0
-                pdfView.minScaleFactor = pdfView.scaleFactorForSizeToFit
-
+                    Animacion_espera()
                 
             }
+    
+    //****************      Espera  ***************************
+    
+    func Animacion_espera()
+        {
+            let center = view.center
+            let trackLayer = CAShapeLayer()
+            let circularPath = UIBezierPath(arcCenter: center, radius: 100, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi, clockwise: true)
+            trackLayer.path = circularPath.cgPath
+            trackLayer.strokeColor = UIColor.lightGray.cgColor
+            trackLayer.lineWidth = 10
+            trackLayer.fillColor = UIColor.clear.cgColor
+            trackLayer.lineCap = CAShapeLayerLineCap.round
+            shapeLayer.path = circularPath.cgPath
+            //shapeLayer.strokeColor = UIColor.red.cgColor
+            shapeLayer.strokeColor = UIColor.lightGray.cgColor
+            shapeLayer.lineWidth = 10
+            shapeLayer.fillColor = UIColor.clear.cgColor
+            shapeLayer.lineCap = CAShapeLayerLineCap.round
+            shapeLayer.strokeEnd = 0
+            view.layer.addSublayer(shapeLayer)
+            let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
+            basicAnimation.toValue = 1
+            basicAnimation.duration = 1.5
+            basicAnimation.repeatCount = Float.infinity
+            basicAnimation.fillMode = CAMediaTimingFillMode.forwards
+            basicAnimation.isRemovedOnCompletion = true
+            basicAnimation.delegate = self
+            shapeLayer.add(basicAnimation, forKey: "urSoBasic")
+        }
+
+    func animationDidStart(_ anim: CAAnimation)
+        {
+            pdfView.document = PDFDocument(url: pdfurl)
+            pdfView.autoScales = true
+            pdfView.maxScaleFactor = 4.0
+            pdfView.minScaleFactor = pdfView.scaleFactorForSizeToFit
+            shapeLayer.removeAllAnimations()
+            
+            
+        }
     //**************************************************************
         func Alerta_Mensajes(title: String,Mensaje:String)
             {
@@ -58,17 +89,13 @@ class Visor: UIViewController,URLSessionDownloadDelegate
         //**************************************************************
             func Agrega_boton_barra_navegacion()
                 {
-                    //self.navigationItem.hidesBackButton = true
                     let nuevo_botton = UIBarButtonItem(title: "Descargar", style: UIBarButtonItem.Style.plain, target: self, action: #selector(Visor.Funcion_Descargar_pdf(sender:)))
                     self.navigationItem.rightBarButtonItem = nuevo_botton
                 }
             @objc func Funcion_Descargar_pdf(sender: UIBarButtonItem)
                 {
-                   //exit(0)
                         guard let url = URL(string: url) else { return }
-                        
                         let urlSession = URLSession(configuration: .default, delegate: self, delegateQueue: OperationQueue())
-                        
                         let downloadTask = urlSession.downloadTask(with: url)
                         downloadTask.resume()
                 }

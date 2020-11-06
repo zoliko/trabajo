@@ -15,12 +15,13 @@ class Lista: UIViewController, UITableViewDelegate, UITableViewDataSource
     var Urls_tabla = [String]()
     var valor = 0
     
+    var url = ""
     //variables  de la pantalla   *******************************************************
     
     @IBOutlet weak var tabla_lista: UITableView!
     @IBOutlet weak var area_nombre_empresa: UITextField!
     
-    let shapeLayer = CAShapeLayer()
+    
     
     //variables enviadas de la pantalla anterior  ***********************************
         
@@ -105,10 +106,11 @@ class Lista: UIViewController, UITableViewDelegate, UITableViewDataSource
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
             {
                 self.tabla_lista.reloadData()
-                Animacion_espera()
-                let url = Urls_tabla[indexPath.row]
+                
+                url = Urls_tabla[indexPath.row]
                 self.dismiss(animated: true)
                 self.performSegue(withIdentifier: "transicion_Lista_visor", sender: url)
+                
             
             }
     
@@ -122,45 +124,7 @@ class Lista: UIViewController, UITableViewDelegate, UITableViewDataSource
                         
                     }
             }
-    //****************      Espera  ***************************
-    
-    func Animacion_espera()
-        {
-            let center = view.center  // let's start by drawing a circle somehow
-            let trackLayer = CAShapeLayer() // create my track layer
-            let circularPath = UIBezierPath(arcCenter: center, radius: 100, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi, clockwise: true)
-            trackLayer.path = circularPath.cgPath
-            trackLayer.strokeColor = UIColor.lightGray.cgColor
-            trackLayer.lineWidth = 10
-            trackLayer.fillColor = UIColor.clear.cgColor
-        trackLayer.lineCap = CAShapeLayerLineCap.round
-            view.layer.addSublayer(trackLayer)
-            
-            //let circularPath = UIBezierPath(arcCenter: center, radius: 100, startAngle: -CGFloat.pi / 2, endAngle: 2 * CGFloat.pi, clockwise: true)
-        
-            shapeLayer.path = circularPath.cgPath
-            
-            shapeLayer.strokeColor = UIColor.red.cgColor
-            shapeLayer.lineWidth = 10
-            shapeLayer.fillColor = UIColor.clear.cgColor
-            shapeLayer.lineCap = CAShapeLayerLineCap.round
-            
-            shapeLayer.strokeEnd = 0
-            view.layer.addSublayer(shapeLayer)
-        
-        
-            //********************
-                let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
-                
-                basicAnimation.toValue = 1
-                
-                basicAnimation.duration = 2
-                
-                basicAnimation.fillMode = CAMediaTimingFillMode.forwards
-                basicAnimation.isRemovedOnCompletion = false
-                
-                shapeLayer.add(basicAnimation, forKey: "urSoBasic")
-        }
+
     
     //*************************       funciones servidor web*******************************
     
