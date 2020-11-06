@@ -182,6 +182,16 @@ class Login: UIViewController, UITextFieldDelegate
                                                 UserDefaults.standard.set(true, forKey: "estado_login")
                                                 UserDefaults.standard.set(self.Nombre_Empresa, forKey: "Nombre_Empresa")
                                                 UserDefaults.standard.set(self.id_Empresa, forKey: "id_Empresa")
+                                                
+                                                //************
+                                                    self.correo_usr = ""
+                                                    self.pass_usr = ""
+                                                    self.id_Empresa = String()
+                                                    self.Nombre_Empresa = String()
+                                                    
+                                                    self.Campo_Correo.text = ""
+                                                    self.Campo_pass.text = ""
+                                                //************
                                                         
                                                 self.dismiss(animated: true)
                                                 self.performSegue(withIdentifier: "transicion_Login_Menu", sender: self)

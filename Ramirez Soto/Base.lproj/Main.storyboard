@@ -24,7 +24,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="O4D-t6-gUd"/>
+                    <navigationItem key="navigationItem" id="O4D-t6-gUd" colorLabel="IBBuiltInLabel-Blue"/>
                     <connections>
                         <segue destination="EwH-Yv-azy" kind="show" identifier="transicion_Splash_Login" id="RRf-Vi-P60"/>
                         <segue destination="UoZ-hl-B9w" kind="show" identifier="transicion_Splash_Menu" id="koZ-ok-Wbh"/>
@@ -174,6 +174,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Nombre Empresa" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" background="area_nombre_empresa" disabledBackground="area_nombre_empresa" translatesAutoresizingMaskIntoConstraints="NO" id="pkf-DA-IHa">
                                 <rect key="frame" x="61" y="71" width="292" height="71"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="NotoSerif-Regular" family="Noto Serif" pointSize="21"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -253,7 +254,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="4tu-x5-Clw"/>
+        <segue reference="koZ-ok-Wbh"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="area_nombre_empresa" width="717" height="191"/>

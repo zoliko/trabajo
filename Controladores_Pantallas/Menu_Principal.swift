@@ -9,6 +9,12 @@ import UIKit
 
 class Menu_Principal: UIViewController {
 
+    // informacion guardada por el usuario
+    
+        var id_Empresa = String()
+        var Nombre_Empresa = String()
+    
+    
     //variables de la interfaz ************************************************************
     
         @IBOutlet weak var area_nombre_empresa: UITextField!
@@ -20,14 +26,25 @@ class Menu_Principal: UIViewController {
             super.viewDidLoad()
             
             // para mejor la vista de la pantalla *****************************************
-            
+        
+                Agrega_boton_barra_navegacion()
+                Obtener_informacion()
                 Cambiar_fondo()
                 area_nombre_empresa.background = UIImage(named: "area_nombre_empresa")!
                 area_nombre_empresa.isUserInteractionEnabled = false;
+                area_nombre_empresa.text = Nombre_Empresa
         
             // para mejor la vista de la pantalla *****************************************
 
         }
+    // recuperar informacion
+    
+    func Obtener_informacion()
+            {
+                id_Empresa = UserDefaults.standard.string(forKey: "id_Empresa") ??  String()
+                Nombre_Empresa = UserDefaults.standard.string(forKey: "Nombre_Empresa") ?? String()
+    
+            }
     // funcionalidad  *******************************************************************
     
         @IBAction func Menu_boton_precionado(_ sender: UIButton)
@@ -81,5 +98,20 @@ class Menu_Principal: UIViewController {
                 self.view.backgroundColor = UIColor(patternImage: image)
 
             }
+        func Agrega_boton_barra_navegacion()
+            {
+                self.navigationItem.hidesBackButton = true
+                let newBackButton = UIBarButtonItem(title: "Cerrar Sesion", style: UIBarButtonItem.Style.plain, target: self, action: #selector(Menu_Principal.cerrar_Sesion(sender:)))
+                self.navigationItem.rightBarButtonItem = newBackButton
+            }
+    @objc func cerrar_Sesion(sender: UIBarButtonItem)
+        {
+            UserDefaults.standard.set(false, forKey: "estado_login")
+            UserDefaults.standard.set(String(), forKey: "Nombre_Empresa")
+            UserDefaults.standard.set(String(), forKey: "id_Empresa")
+            //exit(0)
+            self.navigationController?.popViewController(animated: true)
+        
+        }
 
 }

@@ -11,32 +11,28 @@ class ViewController: UIViewController {
 
     // variables de funcionamiento
     
-        var estado_login = false
+    var  estado_login: Bool? = false
 
     override func viewDidLoad()
         {
             super.viewDidLoad()
             Cambiar_fondo()
             Verifica_Logueo()
-        
-            
-            
-            
-        
-        
         }
         
     func Verifica_Logueo()
             {
-                estado_login = (UserDefaults.standard.object(forKey: "estado_login") != nil)
+                estado_login = UserDefaults.standard.bool(forKey: "estado_login") as Bool?
+                //print(estado_login)
+                
     
                 if estado_login == true
                     {
-                        let timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(transicion_Splash_Menu), userInfo: nil, repeats: false)
+                    _ = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(transicion_Splash_Menu), userInfo: nil, repeats: false)
                     }
                 else
                     {
-                        let timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(transicion_Splash_Login), userInfo: nil, repeats: false)
+                        _ = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(transicion_Splash_Login), userInfo: nil, repeats: false)
                     }
             }
     @objc func transicion_Splash_Login()
@@ -51,6 +47,9 @@ class ViewController: UIViewController {
         }
     func Cambiar_fondo()
         {
+            navigationController?.navigationBar.barTintColor = UIColor.black
+            //navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.orange]
+        
             UIGraphicsBeginImageContext(self.view.frame.size)
             UIImage(named: "splash_screen_press")?.draw(in: self.view.bounds)
             let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
