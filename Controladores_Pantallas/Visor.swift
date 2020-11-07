@@ -16,6 +16,7 @@ class Visor: UIViewController,URLSessionDownloadDelegate,CAAnimationDelegate
         var url = String()
         var pdf_URL: URL!
         var  pdfurl: URL!
+    
 
         override func viewDidLoad()
             {
