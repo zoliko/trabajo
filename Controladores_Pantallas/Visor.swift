@@ -8,7 +8,7 @@
 import UIKit
 import PDFKit
 
-class Visor: UIViewController,URLSessionDownloadDelegate,CAAnimationDelegate
+class Visor: UIViewController,CAAnimationDelegate
 {
     let shapeLayer = CAShapeLayer()
     var pdfView = PDFView()
@@ -95,32 +95,22 @@ class Visor: UIViewController,URLSessionDownloadDelegate,CAAnimationDelegate
                 }
             @objc func Funcion_Descargar_pdf(sender: UIBarButtonItem)
                 {
-                        guard let url = URL(string: url) else { return }
-                        let urlSession = URLSession(configuration: .default, delegate: self, delegateQueue: OperationQueue())
-                        let downloadTask = urlSession.downloadTask(with: url)
-                        downloadTask.resume()
+                    // archivos necesarios para descarga
+                
+                        let url_descarga =  URL(string: url)!
+                        let tarea_descarga = URLSession.shared.downloadTask(with: url_descarga) { (urlresponse,response, error) in
+                                
+                            guard let originalUrl = urlresponse else {return}
+                            
+                            do{
+                                let direccion = try FileManager.default.url(for: .adminApplicationDirectory, in: .userDomainMask,appropriateFor: nil,create: false)
+                                let nuevaUrl = direccion.appendingPathComponent("nuevo")
+                                try FileManager.default.moveItem(at:direccion , to: nuevaUrl)
+                            }catch{print(error.localizedDescription);return}
+                                
+                        }
+                        tarea_descarga.resume()
                 }
     
-        func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL)
-            {
-                
-                print("downloadLocation:", location)
-                guard let url = downloadTask.originalRequest?.url else { return }
-                let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-                let destinationURL = documentsPath.appendingPathComponent(url.lastPathComponent)
-                
-                // delete original copy
-                
-                    try? FileManager.default.removeItem(at: destinationURL)
-                        
-                // copy from temp to Document
-                        do
-                            {
-                                try FileManager.default.copyItem(at: location, to: destinationURL)
-                                self.pdf_URL = destinationURL
-                                print("Estoy en : \(destinationURL)")
-                            }
-                        catch let error { print("Copy Error: \(error.localizedDescription)")}
-            }
         
     }
